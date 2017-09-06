@@ -1,0 +1,32 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="https://cp.cloud.nifty.com/api/">
+  <xsd:element name="DescribeRegionsResponse" type="DescribeRegionsResponseType"/>
+  <xsd:complexType name="DescribeRegionsResponseType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="requestId" minOccurs="0"/>
+      <xsd:element type="regionInfoType" name="regionInfo" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="regionInfoType">
+    <xsd:sequence>
+      <xsd:element type="regionInfo_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="regionInfo_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="regionName" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="regionEndpoint" minOccurs="0"/>
+      <xsd:element type="messageSetType" name="messageSet" minOccurs="0"/>
+      <xsd:element type="xsd:boolean" name="isDefault" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="messageSetType">
+    <xsd:sequence>
+      <xsd:element type="messageSet_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="messageSet_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="message" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

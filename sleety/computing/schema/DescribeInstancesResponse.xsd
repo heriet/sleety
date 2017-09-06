@@ -1,0 +1,237 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="https://cp.cloud.nifty.com/api/">
+  <xsd:element name="DescribeInstancesResponse" type="DescribeInstancesResponseType"/>
+  <xsd:complexType name="DescribeInstancesResponseType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="requestId" minOccurs="0"/>
+      <xsd:element type="reservationSetType" name="reservationSet" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="reservationSetType">
+    <xsd:sequence>
+      <xsd:element type="reservationSet_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="reservationSet_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="reservationId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="ownerId" minOccurs="0"/>
+      <xsd:element type="groupSetType" name="groupSet" minOccurs="0"/>
+      <xsd:element type="instancesSetType" name="instancesSet" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="groupSetType">
+    <xsd:sequence>
+      <xsd:element type="groupSet_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="groupSet_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="groupId" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="instancesSetType">
+    <xsd:sequence>
+      <xsd:element type="instancesSet_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="instancesSet_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="instanceId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="instanceUniqueId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="imageId" minOccurs="0"/>
+      <xsd:element type="instanceStateType" name="instanceState" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="privateDnsName" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="dnsName" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="reason" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="keyName" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="amiLaunchIndex" minOccurs="0"/>
+      <xsd:element type="productCodesType" name="productCodes" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="instanceType" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="launchTime" minOccurs="0"/>
+      <xsd:element type="placementType" name="placement" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="kernelId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="ramdiskId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="platform" minOccurs="0"/>
+      <xsd:element type="monitoringType" name="monitoring" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="subnetId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="vpcId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="privateIpAddress" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="ipAddress" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="privateIpAddressV6" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="ipAddressV6" minOccurs="0"/>
+      <xsd:element type="stateReasonType" name="stateReason" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="architecture" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="rootDeviceType" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="rootDeviceName" minOccurs="0"/>
+      <xsd:element type="blockDeviceMappingType" name="blockDeviceMapping" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="instanceLifecycle" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="spotInstanceRequestId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="accountingType" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="nextMonthAccountingType" minOccurs="0"/>
+      <xsd:element type="loadbalancingType" name="loadbalancing" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="copyInfo" minOccurs="0"/>
+      <xsd:element type="autoscalingType" name="autoscaling" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="ipType" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="niftyPrivateIpType" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="description" minOccurs="0"/>
+      <xsd:element type="niftySnapshottingType" name="niftySnapshotting" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="niftyPrivateNetworkType" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="tenancy" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="instanceStateType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="code" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="name" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="productCodesType">
+    <xsd:sequence>
+      <xsd:element type="productCodes_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="productCodes_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="productCode" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="placementType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="availabilityZone" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="monitoringType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="state" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="stateReasonType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="code" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="message" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="blockDeviceMappingType">
+    <xsd:sequence>
+      <xsd:element type="blockDeviceMapping_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="blockDeviceMapping_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="deviceName" minOccurs="0"/>
+      <xsd:element type="ebsType" name="ebs" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ebsType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="volumeId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="status" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="attachTime" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="deleteOnTermination" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="loadbalancingType">
+    <xsd:sequence>
+      <xsd:element type="loadbalancing_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="loadbalancing_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="loadBalancerName" minOccurs="0"/>
+      <xsd:element type="xsd:integer" name="loadBalancerPort" minOccurs="0"/>
+      <xsd:element type="xsd:integer" name="instancePort" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="autoscalingType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="autoScalingGroupName" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="expireTime" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="niftySnapshottingType">
+    <xsd:sequence>
+      <xsd:element type="niftySnapshotting_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="niftySnapshotting_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="state" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="networkInterfaceType">
+    <xsd:sequence>
+      <xsd:element type="networkInterface_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="networkInterface_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="networkInterfaceId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="subnetId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="vpcId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="description" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="ownerId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="niftyNetworkId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="niftyNetworkName" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="groupSetType">
+    <xsd:sequence>
+      <xsd:element type="groupSet_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="groupSet_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="groupId" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="attachmentType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="attachmentID" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="deviceIndex" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="status" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="attachTime" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="deleteOnTermination" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="associationType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="publicIp" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="publicIpV6" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="publicDnsName" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="ipOwnerId" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="privateIpAddressesSetType">
+    <xsd:sequence>
+      <xsd:element type="privateIpAddressesSet_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="privateIpAddressesSet_itemType">
+    <xsd:sequence>
+      <xsd:element type="associationType" name="association" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="privateDnsName" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="privateIpAddress" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="associationType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="ipOwnerId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="publicDnsName" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="publicIp" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="niftyElasticLoadBalancingType">
+    <xsd:sequence>
+      <xsd:element type="niftyElasticLoadBalancing_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="niftyElasticLoadBalancing_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="elasticLoadBalancerId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="elasticLoadBalancerName" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="protocol" minOccurs="0"/>
+      <xsd:element type="xsd:integer" name="elasticLoadBalancerPort" minOccurs="0"/>
+      <xsd:element type="xsd:integer" name="instancePort" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

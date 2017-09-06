@@ -1,0 +1,157 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="https://cp.cloud.nifty.com/api/">
+  <xsd:element name="DescribeSecurityGroupsResponse" type="DescribeSecurityGroupsResponseType"/>
+  <xsd:complexType name="DescribeSecurityGroupsResponseType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="requestId" minOccurs="0"/>
+      <xsd:element type="securityGroupInfoType" name="securityGroupInfo" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="securityGroupInfoType">
+    <xsd:sequence>
+      <xsd:element type="securityGroupInfo_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="securityGroupInfo_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="ownerId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="groupName" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="groupDescription" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="groupStatus" minOccurs="0"/>
+      <xsd:element type="ipPermissionsType" name="ipPermissions" minOccurs="0"/>
+      <xsd:element type="instanceUniqueIdsSetType" name="instanceUniqueIdsSet" minOccurs="0"/>
+      <xsd:element type="instancesNetworkInterfaceSetType" name="instancesNetworkInterfaceSet" minOccurs="0"/>
+      <xsd:element type="routerSetType" name="routerSet" minOccurs="0"/>
+      <xsd:element type="routerNetworkInterfaceSetType" name="routerNetworkInterfaceSet" minOccurs="0"/>
+      <xsd:element type="vpnGatewaySetType" name="vpnGatewaySet" minOccurs="0"/>
+      <xsd:element type="vpnGatewayNetworkInterfaceSetType" name="vpnGatewayNetworkInterfaceSet" minOccurs="0"/>
+      <xsd:element type="xsd:int" name="groupRuleLimit" minOccurs="0"/>
+      <xsd:element type="xsd:int" name="groupLogLimit" minOccurs="0"/>
+      <xsd:element type="xsd:boolean" name="groupLogFilterNetBios" minOccurs="0"/>
+      <xsd:element type="xsd:boolean" name="groupLogFilterBroadcast" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="availabilityZone" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="description" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ipPermissionsType">
+    <xsd:sequence>
+      <xsd:element type="ipPermissions_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ipPermissions_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="ipProtocol" minOccurs="0"/>
+      <xsd:element type="xsd:integer" name="fromPort" minOccurs="0"/>
+      <xsd:element type="xsd:integer" name="toPort" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="inOut" minOccurs="0"/>
+      <xsd:element type="groupsType" name="groups" minOccurs="0"/>
+      <xsd:element type="ipRangesType" name="ipRanges" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="description" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="addDatetime" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="groupsType">
+    <xsd:sequence>
+      <xsd:element type="groups_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="groups_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="userId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="groupName" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ipRangesType">
+    <xsd:sequence>
+      <xsd:element type="ipRanges_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ipRanges_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="cidrIp" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="instancesSetType">
+    <xsd:sequence>
+      <xsd:element type="instancesSet_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="instancesSet_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="instanceId" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="instanceUniqueIdsSetType">
+    <xsd:sequence>
+      <xsd:element type="instanceUniqueIdsSet_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="instanceUniqueIdsSet_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="instanceUniqueId" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="instancesNetworkInterfaceSetType">
+    <xsd:sequence>
+      <xsd:element type="instancesNetworkInterfaceSet_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="instancesNetworkInterfaceSet_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="instanceId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="instanceUniqueId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="networkId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="deviceIndex" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="ipAddress" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="routerSetType">
+    <xsd:sequence>
+      <xsd:element type="routerSet_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="routerSet_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="routerId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="routerName" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="routerNetworkInterfaceSetType">
+    <xsd:sequence>
+      <xsd:element type="routerNetworkInterfaceSet_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="routerNetworkInterfaceSet_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="routerId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="routerName" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="networkId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="deviceIndex" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="ipAddress" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="vpnGatewaySetType">
+    <xsd:sequence>
+      <xsd:element type="vpnGatewaySet_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="vpnGatewaySet_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="vpnGatewayId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="niftyVpnGatewayName" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="vpnGatewayNetworkInterfaceSetType">
+    <xsd:sequence>
+      <xsd:element type="vpnGatewayNetworkInterfaceSet_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="vpnGatewayNetworkInterfaceSet_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="vpnGatewayId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="niftyVpnGatewayName" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="networkId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="deviceIndex" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="ipAddress" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
