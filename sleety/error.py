@@ -9,6 +9,3 @@ class SleetyUnsupportedError(SleetyError):
 
 class SleetySchemaError(SleetyError):
     pass
-
-class SleetyResponseError(SleetyError):
-    pass

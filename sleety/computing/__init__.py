@@ -1,1 +1,1 @@
-from .connection import ComputingConnection
+from .connection import ComputingConnection, ComputingResponse

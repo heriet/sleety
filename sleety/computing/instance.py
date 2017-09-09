@@ -1,9 +1,12 @@
-from sleety.errors import SleetyResponseError
 
 def describe_instances(conn, params=None):
     res = conn.query('DescribeInstances', params)
 
-    if res.has_error():
-        raise SleetyResponseError()
+    reservations = res.dict['reservationSet']['item']
 
-    return res.dict
+    if not reservations:
+        return []
+
+    instances = reservations[0]['instancesSet']['item']
+
+    return instances

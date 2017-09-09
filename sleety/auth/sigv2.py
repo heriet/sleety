@@ -27,30 +27,30 @@ class SignatureV2:
         return base64.b64encode(digest)
 
 
-    def get(self, path, action, params=None):
-        self.request(path, action, params, method='GET')
+    def get(self, path, action, params=None, timeout=None):
+        self.request(path, action, params, 'GET', timeout)
 
 
-    def post(self, path, action, params=None):
-        self.request(path, action, params, method='POST')
+    def post(self, path, action, params=None, timeout=None):
+        self.request(path, action, params, 'POST', timeout)
 
 
-    def request(self, path, action, params=None, method='POST'):
+    def request(self, path, action, params=None, method='POST', timeout=None):
         request_params = copy.deepcopy(params) if params else {}
         request_params['Action'] = action
         request_params['AccessKeyId'] = self.access_key
         request_params['SignatureMethod'] = 'HmacSHA256'
         request_params['SignatureVersion'] = '2'
 
-        if method == 'GET':
-            url = 'https://{0}{1}?{2}'.format(self.endpoint, path, urlencode(params))
-        elif method == 'POST':
-            url = 'https://{0}{1}'.format(self.endpoint, path)
-
         request_params['Signature'] = self.calculate_signature(
             self.secret_access_key, method, self.endpoint, path, request_params)
 
-        url = 'https://{0}{1}'.format(self.endpoint, path)
-        response = requests.post(url, urlencode(request_params))
+        if method == 'GET':
+            url = 'https://{0}{1}?{2}'.format(self.endpoint, path, urlencode(params))
+            response = requests.get(url, timeout=timeout)
+
+        elif method == 'POST':
+            url = 'https://{0}{1}'.format(self.endpoint, path)
+            response = requests.post(url, urlencode(request_params), timeout=timeout)
 
         return response

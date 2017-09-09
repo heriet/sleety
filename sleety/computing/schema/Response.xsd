@@ -1,0 +1,20 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xsd:element name="Response" type="ResponseType"/>
+  <xsd:complexType name="ResponseType">
+    <xsd:sequence>
+      <xsd:element type="ErrorsType" name="Errors" />
+      <xsd:element type="xsd:string" name="RequestID" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorsType">
+    <xsd:sequence>
+      <xsd:element type="ErrorType" name="Error" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="Code" />
+      <xsd:element type="xsd:string" name="Message" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
