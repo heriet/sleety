@@ -1,7 +1,5 @@
 # sleety
 
-WIP
-
 python SDK for Niftycloud
 
 python >= 2.7 or 3.x
@@ -23,17 +21,22 @@ $ python setup.py install
 ## Quick Start
 
 ```
-import sleety
+import os
 
 from sleety.region import NiftyCloudRegion
-from sleety.computing import connection, instance
+from sleety.computing import region
+from sleety.computing.connection import ComputingConnection
 
-access_key = 'XXXXXXXXXXXX'
-secret_access_key = 'YYYYYYYYYYY'
+def main():
+    access_key = os.environ.get('NIFTYCLOUD_ACCESS_KEY')
+    secret_access_key = os.environ.get('NIFTYCLOUD_SECRET_ACCESS_KEY')
 
-east1 = NiftyCloudRegion('jp-east-1')
-conn_east1 = connection.make_region_connection(access_key, secret_access_key, east1)
-print(instance.describe_instances(conn_east1))
+    east1 = NiftyCloudRegion('jp-east-1')
+    conn = ComputingConnection(access_key, secret_access_key, east1)
+    print(region.describe_regions(conn))
+
+if __name__ == '__main__':
+    main()
 ```
 
 ## supported service
@@ -41,3 +44,5 @@ print(instance.describe_instances(conn_east1))
 ### computing
 
 * DescribeRegions
+* DescribeInstances
+* DescribeSecurityGroups
