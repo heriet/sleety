@@ -1,13 +1,14 @@
-import copy
 import base64
+import copy
 import hashlib
 import hmac
 
 from future.moves.urllib.parse import quote, urlencode
-
 import requests
 
+
 class SignatureV2:
+
     def __init__(self, access_key, secret_access_key, endpoint):
         self.access_key = access_key
         self.secret_access_key = secret_access_key
@@ -26,14 +27,11 @@ class SignatureV2:
 
         return base64.b64encode(digest)
 
-
     def get(self, path, action, params=None, timeout=None):
         self.request(path, action, params, 'GET', timeout)
 
-
     def post(self, path, action, params=None, timeout=None):
         self.request(path, action, params, 'POST', timeout)
-
 
     def request(self, path, action, params=None, method='POST', timeout=None):
         request_params = copy.deepcopy(params) if params else {}
@@ -42,8 +40,7 @@ class SignatureV2:
         request_params['SignatureMethod'] = 'HmacSHA256'
         request_params['SignatureVersion'] = '2'
 
-        request_params['Signature'] = self.calculate_signature(
-            self.secret_access_key, method, self.endpoint, path, request_params)
+        request_params['Signature'] = self.calculate_signature(self.secret_access_key, method, self.endpoint, path, request_params)
 
         if method == 'GET':
             url = 'https://{0}{1}?{2}'.format(self.endpoint, path, urlencode(params))

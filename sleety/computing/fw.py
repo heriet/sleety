@@ -1,5 +1,6 @@
 from sleety.errors import SleetyResponseError
 
+
 def describe_fw_groups(conn, params=None):
     res = conn.query('DescribeSecurityGroups', params)
 

@@ -1,6 +1,8 @@
 from sleety.error import SleetyError
 
+
 class SleetyComputingResponseError(SleetyError):
+
     def __init__(self, cp_res):
         self.status_code = cp_res.response.status_code
         self.error_code = None

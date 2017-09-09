@@ -1,14 +1,14 @@
 import os
 
 from lxml import etree
-from xmlschema import XMLSchema
 
 from sleety.auth import SignatureV2
-from sleety.connection import RegionConnection
-from sleety.region import NiftyCloudRegion
-from sleety.error import SleetyUnsupportedError, SleetySchemaError
-
 from sleety.computing.error import SleetyComputingResponseError
+from sleety.connection import RegionConnection
+from sleety.error import SleetySchemaError, SleetyUnsupportedError
+from sleety.region import NiftyCloudRegion
+
+from xmlschema import XMLSchema
 
 
 class ComputingConnection(RegionConnection):
@@ -19,11 +19,8 @@ class ComputingConnection(RegionConnection):
     def generate_endpoint(cls, region):
         return "computing.{0}.api.cloud.nifty.com".format(region.name)
 
-
-    def __init__(self, access_key, secret_access_key, region=None, timeout=None,
-                 path='/api/', endpoint=None):
-        super(ComputingConnection, self).__init__(
-            access_key, secret_access_key, region, path, timeout)
+    def __init__(self, access_key, secret_access_key, region=None, timeout=None, path='/api/', endpoint=None):
+        super(ComputingConnection, self).__init__(access_key, secret_access_key, region, path, timeout)
 
         if not self.region:
             self.region = NiftyCloudRegion(self.DefaultRegionName, is_default=True)
@@ -31,7 +28,6 @@ class ComputingConnection(RegionConnection):
         self.endpoint = endpoint
         if not self.endpoint:
             self.endpoint = self.generate_endpoint(region)
-
 
     def send_request(self, action, params=None, method='POST', signature_version='v2'):
         if signature_version == 'v2':
@@ -41,7 +37,6 @@ class ComputingConnection(RegionConnection):
         else:
             # TODO: impl v0, v1
             raise SleetyUnsupportedError('Unsupported sigunature version')
-
 
     def query(self, action, params=None, method='POST', signature_version='v2'):
         response = self.send_request(action, params, method, signature_version)
@@ -65,7 +60,6 @@ class ComputingResponse():
         self.dict = None
         self.schema_dir_path = os.path.join(os.path.dirname(__file__), 'schema')
 
-
     def parse_schema(self):
         root_tag = self.xml_root.tag.replace('{{{0}}}'.format(self.xml_namespace), '')
         schema_path = os.path.join(self.schema_dir_path, '{0}.xsd'.format(root_tag))
@@ -74,15 +68,12 @@ class ComputingResponse():
             raise SleetySchemaError('schema not found: {0}'.format(root_tag))
 
         schema_content = open(schema_path, 'r').read()
-        replaced_schema = schema_content.replace(
-            'targetNamespace="https://cp.cloud.nifty.com/api/"',
-            'targetNamespace="{0}"'.format(self.xml_namespace))
+        replaced_schema = schema_content.replace('targetNamespace="https://cp.cloud.nifty.com/api/"', 'targetNamespace="{0}"'.format(self.xml_namespace))
 
         schema = XMLSchema(replaced_schema)
         self.dict = schema.to_dict(self.xml_root)
 
         return self.dict
-
 
     def has_error(self):
         if self.response.status_code != 200:
@@ -90,11 +81,10 @@ class ComputingResponse():
             return True
 
         elif self.xml_root.tag == self.format_tag('Response') \
-            and self.xml_root.find(self.format_tag('Error')):
+                and self.xml_root.find(self.format_tag('Error')):
             return True
 
         return False
-
 
     def format_tag(self, tag_name):
         return '{{{0}}}{1}'.format(self.xml_namespace, tag_name)

@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 from sleety import __version__
 
@@ -9,18 +9,19 @@ requires = [
     'xmlschema==0.9.11',
     ]
 
-setup(name='sleety',
-      version=__version__,
-      description='SDK for NiftyCloud',
-      author='heriet',
-      author_email='heriet@heriet.info',
-      url='https://github.com/heriet/sleety',
-      packages=find_packages(exclude=["example"]),
-      package_date={
-          '': [
-              '*/schema/*.xsd'
-          ]
-      },
-      install_requires=requires,
-      license='MIT',
-     )
+setup(
+    name='sleety',
+    version=__version__,
+    description='SDK for NiftyCloud',
+    author='heriet',
+    author_email='heriet@heriet.info',
+    url='https://github.com/heriet/sleety',
+    packages=find_packages(exclude=["example", "test"]),
+    package_date={
+        '': [
+            '*/schema/*.xsd'
+        ]
+    },
+    install_requires=requires,
+    license='MIT',
+    )

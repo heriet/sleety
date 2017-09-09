@@ -1,4 +1,5 @@
 class NiftyCloudRegion():
+
     def __init__(self, region_name, is_default=False):
         self.name = region_name
         self.is_default = is_default
