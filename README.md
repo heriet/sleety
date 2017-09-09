@@ -1,5 +1,7 @@
 # sleety
 
+[![Build Status](https://travis-ci.org/heriet/sleety.svg)](https://travis-ci.org/heriet/sleety)
+
 python SDK for Niftycloud
 
 python >= 2.7 or 3.x
