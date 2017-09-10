@@ -17,9 +17,10 @@ setup(
     author_email='heriet@heriet.info',
     url='https://github.com/heriet/sleety',
     packages=find_packages(exclude=["example", "test"]),
+    include_package_data=True,
     package_date={
         '': [
-            '*/schema/*.xsd'
+            'sleety/computing/schema/*.xsd'
         ]
     },
     install_requires=requires,

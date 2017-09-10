@@ -1,0 +1,1 @@
+recursive-include sleety/computing/schema *.xsd
