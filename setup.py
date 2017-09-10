@@ -3,10 +3,10 @@ from setuptools import find_packages, setup
 from sleety import __version__
 
 requires = [
-    'future==0.16.0',
-    'lxml==3.8.0',
-    'requests==2.18.4',
-    'xmlschema==0.9.11',
+    'future',
+    'lxml',
+    'requests',
+    'xmlschema',
     ]
 
 setup(
