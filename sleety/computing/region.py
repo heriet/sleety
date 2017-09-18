@@ -4,7 +4,7 @@ from sleety.region import NiftyCloudRegion
 
 def describe_regions(conn, params=None):
     res = conn.query('DescribeRegions', params)
-    return res.dict['regionInfo']['item']
+    return res.dict['regionInfo']
 
 
 def create_all_region_connections(access_key, secret_access_key, default_region=None, path='/api/'):
