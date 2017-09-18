@@ -60,6 +60,11 @@ class ComputingConnection(RegionConnection):
 
 class ComputingResponse():
 
+    _ONLY_RETURN_RESPONSES = [
+        'CreateSecurityGroupResponse',
+        'DeleteSecurityGroupResponse',
+    ]
+
     @staticmethod
     def squash_item_to_list(source):
 
@@ -94,19 +99,31 @@ class ComputingResponse():
         self.schema_dir_path = os.path.join(os.path.dirname(__file__), 'schema')
 
     def parse_schema(self):
+        schema_content = self._load_shcema()
+        schema = XMLSchema(schema_content)
+        self.dict = schema.to_dict(self.xml_root)
+
+        return self.dict
+
+    def _load_shcema(self):
         root_tag = self.xml_root.tag.replace('{{{0}}}'.format(self.xml_namespace), '')
         schema_path = os.path.join(self.schema_dir_path, '{0}.xsd'.format(root_tag))
+
+        if root_tag in self._ONLY_RETURN_RESPONSES:
+            schema_path = os.path.join(self.schema_dir_path, '_OnlyReturnResponse.xsd')
 
         if not os.path.exists(schema_path):
             raise SleetySchemaError('schema not found: {0}'.format(root_tag))
 
         schema_content = open(schema_path, 'r').read()
-        replaced_schema = schema_content.replace('targetNamespace="https://cp.cloud.nifty.com/api/"', 'targetNamespace="{0}"'.format(self.xml_namespace))
+        schema_content = schema_content.replace(
+            'targetNamespace="https://cp.cloud.nifty.com/api/"',
+            'targetNamespace="{0}"'.format(self.xml_namespace))
 
-        schema = XMLSchema(replaced_schema)
-        self.dict = schema.to_dict(self.xml_root)
+        if root_tag in self._ONLY_RETURN_RESPONSES:
+            schema_content = schema_content.replace('_OnlyReturnResponse', root_tag)
 
-        return self.dict
+        return schema_content
 
     def squash_dict(self):
         self.dict = ComputingResponse.squash_item_to_list(self.dict)

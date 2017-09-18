@@ -1,0 +1,9 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="https://cp.cloud.nifty.com/api/">
+  <xsd:element name="_OnlyReturnResponse" type="_OnlyReturnResponseType"/>
+  <xsd:complexType name="_OnlyReturnResponseType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="requestId" minOccurs="0"/>
+      <xsd:element type="xsd:boolean" name="return" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

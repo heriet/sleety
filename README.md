@@ -47,4 +47,6 @@ if __name__ == '__main__':
 
 * DescribeRegions
 * DescribeInstances
+* CreateSecurityGroups
+* DeleteSecurityGroups
 * DescribeSecurityGroups
