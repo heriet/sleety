@@ -19,8 +19,8 @@ class ComputingConnection(RegionConnection):
     def generate_endpoint(cls, region):
         return "computing.{0}.api.cloud.nifty.com".format(region.name)
 
-    def __init__(self, access_key, secret_access_key, region=None, timeout=None, path='/api/', endpoint=None):
-        super(ComputingConnection, self).__init__(access_key, secret_access_key, region, path, timeout)
+    def __init__(self, access_key, secret_access_key, region=None, timeout=None, request_interval=0, path='/api/', endpoint=None):
+        super(ComputingConnection, self).__init__(access_key, secret_access_key, region, path, timeout, request_interval)
 
         if not self.region:
             self.region = NiftyCloudRegion(self.DefaultRegionName, is_default=True)
@@ -30,6 +30,8 @@ class ComputingConnection(RegionConnection):
             self.endpoint = self.generate_endpoint(region)
 
     def send_request(self, action, params=None, method='POST', signature_version='v2'):
+        self.wait_interval()
+
         if signature_version == 'v2':
             sigv2 = SignatureV2(self.access_key, self.secret_access_key, self.endpoint)
             response = sigv2.request(self.path, action, params, method, self.timeout)
