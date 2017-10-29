@@ -1,0 +1,43 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="https://cp.cloud.nifty.com/api/">
+  <xsd:element name="DescribeVolumesResponse" type="DescribeVolumesResponseType"/>
+  <xsd:complexType name="DescribeVolumesResponseType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="requestId" minOccurs="0"/>
+      <xsd:element type="volumeSetType" name="volumeSet" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="volumeSetType">
+    <xsd:sequence>
+      <xsd:element type="volumeSet_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="volumeSet_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="volumeId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="size" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="diskType" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="snapshotId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="availabilityZone" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="status" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="createTime" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="nextMonthAccountingType" minOccurs="0"/>
+      <xsd:element type="attachmentSetType" name="attachmentSet" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="attachmentSetType">
+    <xsd:sequence>
+      <xsd:element type="attachmentSet_itemType" name="item" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="attachmentSet_itemType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="volumeId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="instanceId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="instanceUniqueId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="device" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="status" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="attachTime" minOccurs="0"/>
+      <xsd:element type="xsd:boolean" name="deleteOnTermination" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

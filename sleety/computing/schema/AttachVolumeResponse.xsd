@@ -1,0 +1,14 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="https://cp.cloud.nifty.com/api/">
+  <xsd:element name="AttachVolumeResponse" type="AttachVolumeResponseType"/>
+  <xsd:complexType name="AttachVolumeResponseType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="requestId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="volumeId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="instanceId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="instanceUniqueId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="device" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="status" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="attachTime" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

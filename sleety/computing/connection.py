@@ -63,6 +63,8 @@ class ComputingResponse():
     _ONLY_RETURN_RESPONSES = [
         'CreateSecurityGroupResponse',
         'DeleteSecurityGroupResponse',
+        'DeleteVolumeResponse',
+        'ModifyVolumeAttributeResponse',
     ]
 
     @staticmethod
