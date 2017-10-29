@@ -5,7 +5,7 @@ from sleety.computing.connection import ComputingResponse
 
 class TestComputingResponse:
 
-    def test_squash_item_to_list(self):
+    def test_squash_list_element(self):
         source = {
             'requestId': 'aaa',
             'reservationSet': {
@@ -17,7 +17,7 @@ class TestComputingResponse:
                     },
                     {
                         'productCodes': {
-                            'item': [
+                            'member': [
                                 {'productCode': None}
                             ],
                         },
@@ -25,7 +25,7 @@ class TestComputingResponse:
                 ],
             },
         }
-        actual = ComputingResponse.squash_item_to_list(source)
+        actual = ComputingResponse.squash_list_element(source)
         expected = {
             'requestId': 'aaa',
             'reservationSet': [

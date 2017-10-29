@@ -45,8 +45,20 @@ if __name__ == '__main__':
 
 ### computing
 
-* DescribeRegions
-* DescribeInstances
-* CreateSecurityGroups
-* DeleteSecurityGroups
-* DescribeSecurityGroups
+- region
+  - describe_regions
+- instance
+  - describe_instances
+- fw
+  - create_security_groups
+  - delete_security_groups
+  - describe_security_groups
+- disk
+  - attach_volume
+  - create_volume
+  - delete_volume
+  - describe_volumes
+  - detach_volume
+  - modify_volume_attribute
+- lb
+  - describe_lb

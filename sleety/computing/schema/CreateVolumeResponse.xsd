@@ -1,0 +1,16 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="https://cp.cloud.nifty.com/api/">
+  <xsd:element name="CreateVolumeResponse" type="CreateVolumeResponseType"/>
+  <xsd:complexType name="CreateVolumeResponseType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="requestId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="volumeId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="size" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="diskType" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="snapshotId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="availabilityZone" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="status" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="createTime" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="accountingType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

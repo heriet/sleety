@@ -41,13 +41,13 @@ class ComputingConnection(RegionConnection):
             # TODO: impl v0, v1
             raise SleetyUnsupportedError('Unsupported sigunature version')
 
-    def query(self, action, params=None, method='POST', signature_version='v2', is_squashed=True):
+    def query(self, action, params=None, method='POST', signature_version='v2', is_squash=True):
         response = self.send_request(action, params, method, signature_version)
         cp_res = self._create_response(response)
         cp_res.parse_schema()
 
-        if is_squashed:
-            cp_res.squash_dict()
+        if is_squash:
+            cp_res.squash()
 
         if cp_res.has_error():
             raise SleetyComputingResponseError(cp_res)
@@ -63,27 +63,32 @@ class ComputingResponse():
     _ONLY_RETURN_RESPONSES = [
         'CreateSecurityGroupResponse',
         'DeleteSecurityGroupResponse',
+        'DeleteVolumeResponse',
+        'ModifyVolumeAttributeResponse',
     ]
 
     @staticmethod
-    def squash_item_to_list(source):
+    def squash_list_element(source):
 
         if isinstance(source, list):
-            return [ComputingResponse.squash_item_to_list(x) for x in source]
+            return [ComputingResponse.squash_list_element(x) for x in source]
 
         if not isinstance(source, dict):
             return source
 
         keys = source.keys()
         if len(keys) and list(keys)[0] == 'item' and isinstance(source['item'], list):
-            return [ComputingResponse.squash_item_to_list(x) for x in source['item']]
+            return [ComputingResponse.squash_list_element(x) for x in source['item']]
+
+        if len(keys) and list(keys)[0] == 'member' and isinstance(source['member'], list):
+            return [ComputingResponse.squash_list_element(x) for x in source['member']]
 
         squashed = {}
         for key, value in source.items():
             if isinstance(value, dict):
-                squashed[key] = ComputingResponse.squash_item_to_list(value)
+                squashed[key] = ComputingResponse.squash_list_element(value)
             elif isinstance(value, list):
-                squashed[key] = [ComputingResponse.squash_item_to_list(x) for x in value]
+                squashed[key] = [ComputingResponse.squash_list_element(x) for x in value]
             else:
                 squashed[key] = value
 
@@ -125,8 +130,8 @@ class ComputingResponse():
 
         return schema_content
 
-    def squash_dict(self):
-        self.dict = ComputingResponse.squash_item_to_list(self.dict)
+    def squash(self):
+        self.dict = ComputingResponse.squash_list_element(self.dict)
 
     def has_error(self):
         if self.response.status_code != 200:
