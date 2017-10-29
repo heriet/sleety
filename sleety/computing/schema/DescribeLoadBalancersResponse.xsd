@@ -1,0 +1,170 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="https://cp.cloud.nifty.com/api/">
+  <xsd:element name="DescribeLoadBalancersResponse" type="DescribeLoadBalancersResponseType"/>
+  <xsd:complexType name="DescribeLoadBalancersResponseType">
+    <xsd:sequence>
+      <xsd:element type="DescribeLoadBalancersResultType" name="DescribeLoadBalancersResult" minOccurs="0"/>
+      <xsd:element type="ResponseMetadataType" name="ResponseMetadata" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DescribeLoadBalancersResultType">
+    <xsd:sequence>
+      <xsd:element type="LoadBalancerDescriptionsType" name="LoadBalancerDescriptions" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LoadBalancerDescriptionsType">
+    <xsd:sequence>
+      <xsd:element type="LoadBalancerDescriptions_memberType" name="member" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LoadBalancerDescriptions_memberType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="LoadBalancerName" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="DNSName" minOccurs="0"/>
+      <xsd:element type="xsd:integer" name="NetworkVolume" minOccurs="0"/>
+      <xsd:element type="ListenerDescriptionsType" name="ListenerDescriptions" minOccurs="0"/>
+      <xsd:element type="PoliciesType" name="Policies" minOccurs="0"/>
+      <xsd:element type="AvailabilityZonesType" name="AvailabilityZones" minOccurs="0"/>
+      <xsd:element type="InstancesType" name="Instances" minOccurs="0"/>
+      <xsd:element type="HealthCheckType" name="HealthCheck" minOccurs="0"/>
+      <xsd:element type="FilterType" name="Filter" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="CreatedTime" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="AccountingType" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="NextMonthAccountingType" minOccurs="0"/>
+      <xsd:element type="OptionType" name="Option" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="Description" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ListenerDescriptionsType">
+    <xsd:sequence>
+      <xsd:element type="ListenerDescriptions_memberType" name="member" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ListenerDescriptions_memberType">
+    <xsd:sequence>
+      <xsd:element type="PolicyNamesType" name="PolicyNames" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ListenerType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="Protocol" minOccurs="0"/>
+      <xsd:element type="xsd:integer" name="LoadBalancerPort" minOccurs="0"/>
+      <xsd:element type="xsd:integer" name="InstancePort" minOccurs="0"/>
+      <xsd:element type="xsd:integer" name="BalancingType" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="SSLCertificateId" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PolicyNamesType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="member" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PoliciesType">
+    <xsd:sequence>
+      <xsd:element type="AppCookieStickinessPoliciesType" name="AppCookieStickinessPolicies" minOccurs="0"/>
+      <xsd:element type="LBCookieStickinessPoliciesType" name="LBCookieStickinessPolicies" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AppCookieStickinessPoliciesType">
+    <xsd:sequence>
+      <xsd:element type="AppCookieStickinessPolicies_memberType" name="member" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AppCookieStickinessPolicies_memberType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="PolicyName" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="CookieName" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LBCookieStickinessPoliciesType">
+    <xsd:sequence>
+      <xsd:element type="LBCookieStickinessPolicies_memberType" name="member" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LBCookieStickinessPolicies_memberType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="PolicyName" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="CookieExpirationPeriod" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AvailabilityZonesType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="member" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InstancesType">
+    <xsd:sequence>
+      <xsd:element type="Instances_memberType" name="member" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Instances_memberType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="InstanceId" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="HealthCheckType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="Target" minOccurs="0"/>
+      <xsd:element type="xsd:integer" name="Interval" minOccurs="0"/>
+      <xsd:element type="xsd:integer" name="Timeout" minOccurs="0"/>
+      <xsd:element type="xsd:integer" name="UnhealthyThreshold" minOccurs="0"/>
+      <xsd:element type="xsd:integer" name="HealthyThreshold" minOccurs="0"/>
+      <xsd:element type="InstanceStatesType" name="InstanceStates" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InstanceStatesType">
+    <xsd:sequence/>
+  </xsd:complexType>
+  <xsd:complexType name="item_memberType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="InstanceId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="InstanceUniqueId" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="State" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="ReasonCode" minOccurs="0"/>
+      <xsd:element type="xsd:string" name="Description" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FilterType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="FilterType" minOccurs="0"/>
+      <xsd:element type="IPAddressesType" name="IPAddresses" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="IPAddressesType">
+    <xsd:sequence>
+      <xsd:element type="IPAddresses_memberType" name="member" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="IPAddresses_memberType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="IPAddress" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OptionType">
+    <xsd:sequence>
+      <xsd:element type="SessionStickinessPolicyType" name="SessionStickinessPolicy" minOccurs="0"/>
+      <xsd:element type="SorryPageType" name="SorryPage" minOccurs="0"/>
+      <xsd:element type="MobileFilterType" name="MobileFilter" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SessionStickinessPolicyType">
+    <xsd:sequence>
+      <xsd:element type="xsd:boolean" name="Enabled" minOccurs="0"/>
+      <xsd:element type="xsd:int" name="ExpirationPeriod" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SorryPageType">
+    <xsd:sequence>
+      <xsd:element type="xsd:boolean" name="Enabled" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MobileFilterType">
+    <xsd:sequence>
+      <xsd:element type="xsd:boolean" name="Enabled" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResponseMetadataType">
+    <xsd:sequence>
+      <xsd:element type="xsd:string" name="RequestId" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
