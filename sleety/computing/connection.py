@@ -6,7 +6,7 @@ from sleety.auth import SignatureV2
 from sleety.computing.error import SleetyComputingResponseError
 from sleety.connection import RegionConnection
 from sleety.error import SleetySchemaError, SleetyUnsupportedError
-from sleety.region import NiftyCloudRegion
+from sleety.region import NifcloudRegion
 
 from xmlschema import XMLSchema
 
@@ -24,7 +24,7 @@ class ComputingConnection(RegionConnection):
         super(ComputingConnection, self).__init__(access_key, secret_access_key, region, path, timeout, request_interval)
 
         if not self.region:
-            self.region = NiftyCloudRegion(self.DefaultRegionName, is_default=True)
+            self.region = NifcloudRegion(self.DefaultRegionName, is_default=True)
 
         self.endpoint = endpoint
         if not self.endpoint:

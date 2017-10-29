@@ -7,12 +7,12 @@ requires = [
     'lxml',
     'requests',
     'xmlschema',
-    ]
+]
 
 setup(
     name='sleety',
     version=__version__,
-    description='SDK for NiftyCloud',
+    description='SDK for NIFCLOUD',
     author='heriet',
     author_email='heriet@heriet.info',
     url='https://github.com/heriet/sleety',
@@ -25,4 +25,4 @@ setup(
     },
     install_requires=requires,
     license='MIT',
-    )
+)
