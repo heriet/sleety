@@ -1,5 +1,5 @@
 from sleety.computing.connection import ComputingConnection
-from sleety.region import NiftyCloudRegion
+from sleety.region import NifcloudRegion
 
 
 def describe_regions(conn, params=None):
@@ -14,8 +14,8 @@ def create_all_region_connections(access_key, secret_access_key, default_region=
     conns = []
     for item in regions:
         is_default = (item['isDefault'] == 'true')
-        region_name = NiftyCloudRegion.correct_region_name(item['regionName'])
-        region = NiftyCloudRegion(region_name, is_default)
+        region_name = NifcloudRegion.correct_region_name(item['regionName'])
+        region = NifcloudRegion(region_name, is_default)
 
         conn = ComputingConnection(access_key, secret_access_key, region, path)
         conns.append(conn)
